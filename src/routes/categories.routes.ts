@@ -11,4 +11,9 @@ categoriesRoutes.post('/', (request: Request, response: Response) => {
   response.status(201).send();
 });
 
+categoriesRoutes.get('/', (request: Request, response: Response) => {
+  const repositories = categoriesRepository.list();
+  return response.json(repositories);
+});
+
 export default categoriesRoutes;

@@ -11,6 +11,10 @@ class CategoriesRepository {
   create({ name, description }: ICreateCategoryDTO) {
     this.categories.push(new Category(name, description));
   }
+
+  list(): Category[] {
+    return this.categories;
+  }
 }
 
 export default CategoriesRepository;
