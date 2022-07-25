@@ -56,7 +56,13 @@
       "error",
       { "devDependencies": ["**/*.spec.js"] }
     ],
-    "prettier/prettier": "error"
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "parser": "flow"
+      }
+    ]
   },
   "settings": {
     "import/resolver": {
