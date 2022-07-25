@@ -15,6 +15,10 @@ class CategoriesRepository {
   list(): Category[] {
     return this.categories;
   }
+
+  findByName(name: string): Category | undefined {
+    return this.categories.find((category) => category.name === name);
+  }
 }
 
 export default CategoriesRepository;
