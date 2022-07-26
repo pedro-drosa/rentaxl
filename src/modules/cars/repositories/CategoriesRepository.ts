@@ -5,7 +5,19 @@ import {
 } from './ICategoriesRepository';
 
 class CategoriesRepository implements ICategoriesRepository {
-  categories: Category[] = [];
+  private categories: Category[];
+  private static instance: ICategoriesRepository;
+
+  private constructor() {
+    this.categories = [];
+  }
+
+  public static getInstance() {
+    if (!CategoriesRepository.instance) {
+      this.instance = new CategoriesRepository();
+    }
+    return this.instance;
+  }
 
   async create({ name, description }: ICreateCategoryDTO) {
     this.categories.push(new Category(name, description));
