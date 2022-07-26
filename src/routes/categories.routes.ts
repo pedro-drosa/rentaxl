@@ -13,8 +13,8 @@ categoriesRoutes.post('/', (request: Request, response: Response) => {
   return response.status(201).send();
 });
 
-categoriesRoutes.get('/', (request: Request, response: Response) => {
-  const repositories = categoriesRepository.list();
+categoriesRoutes.get('/', async (request: Request, response: Response) => {
+  const repositories = await categoriesRepository.list();
   return response.json(repositories);
 });
 
