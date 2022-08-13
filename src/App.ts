@@ -4,6 +4,8 @@ import swaggerUi from 'swagger-ui-express';
 import routes from './routes/routes';
 import swaggerDocument from './swagger.json';
 
+import './database';
+
 class App {
   server: Express;
   constructor() {
