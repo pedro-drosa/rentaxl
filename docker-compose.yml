@@ -1,9 +1,26 @@
 version: '3'
 services:
-  rentalx:
-    container_name: rentalx
+  postgres:
+    image: postgres
+    container_name: db_rentx
+    restart: always
+    ports: 
+    - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=rentx
+    volumes:
+      - pgdata:/data/postgres
+    network_mode: host
+  rentx:
+    container_name: rentx
     build: .
     ports:
       - 5000:5000
     volumes:
       - ./:/usr/app
+    network_mode: host
+  
+volumes:
+  pgdata:
