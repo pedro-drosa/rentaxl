@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "RentalX API",
+    "title": "RentX API",
     "description": "This is the rental API",
     "version": "1.0.0",
     "contact": {
@@ -29,7 +29,7 @@
                 },
                 "example": {
                   "name": "Category name example",
-                  "description": "Category description examples"
+                  "description": "Category description example"
                 }
               }
             }
@@ -71,6 +71,47 @@
             }
           }
         }
+      }
+    },
+    "/specifications": {
+      "post": {
+        "tags": ["Specifications"],
+        "summary": "Create a Specification",
+        "description": "Create a new Specification",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/definitions/Specification"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Created"
+          },
+          "500": {
+            "description": "Specification already exists"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Specification": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      },
+      "example": {
+        "name": "Specification name example",
+        "description": "Specification description example"
       }
     }
   }
