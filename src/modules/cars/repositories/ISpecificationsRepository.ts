@@ -7,5 +7,5 @@ export type ICreateSpecificationDTO = {
 
 export interface ISpecificationsRepository {
   create(data: ICreateSpecificationDTO): Promise<void>;
-  findByName(name: string): Promise<Specification | undefined>;
+  findByName(name: string): Promise<Specification | null>;
 }
