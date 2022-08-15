@@ -8,8 +8,6 @@ class User {
   @Column()
   name: string;
   @Column()
-  username: string;
-  @Column()
   password: string;
   @Column()
   email: string;
@@ -30,7 +28,6 @@ class User {
   ) {
     this.id = id || uuidV4();
     this.name = name;
-    this.username = username;
     this.password = password;
     this.email = email;
     this.driver_license = driver_license;
