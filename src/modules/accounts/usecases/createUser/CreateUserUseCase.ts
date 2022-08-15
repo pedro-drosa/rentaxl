@@ -1,3 +1,4 @@
+import { hash } from 'bcrypt';
 import { inject, injectable } from 'tsyringe';
 
 import { IUsersRepository } from '../../repositories/IUsersRepository';
@@ -18,8 +19,14 @@ class CreateUserUseCase {
     this.usersRepository = usersRepository;
   }
 
-  async execute(data: IRequest) {
-    this.usersRepository.create({ ...data });
+  async execute({ name, email, password, driver_license }: IRequest) {
+    const passwordHash = await hash(password, 10);
+    this.usersRepository.create({
+      name,
+      email,
+      password: passwordHash,
+      driver_license,
+    });
   }
 }
 
