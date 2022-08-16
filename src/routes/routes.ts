@@ -6,6 +6,7 @@ import specificationRoutes from './specifications.routes';
 import usersRoutes from './users.routes';
 
 const routes = Router();
+
 routes.use('/categories', categoriesRoutes);
 routes.use('/specifications', specificationRoutes);
 routes.use('/users', usersRoutes);

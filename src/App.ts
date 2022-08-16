@@ -1,12 +1,13 @@
 import 'reflect-metadata';
+import 'express-async-errors';
 import express, { Express } from 'express';
 import swaggerUi from 'swagger-ui-express';
 
 import routes from './routes/routes';
 import swaggerDocument from './swagger.json';
-
 import './database';
 import './shared/containers';
+import errorHandler from './middlewares/errorHandler';
 
 class App {
   server: Express;
@@ -14,6 +15,7 @@ class App {
     this.server = express();
     this.middlewares();
     this.routes();
+    this.server.use(errorHandler);
   }
 
   middlewares() {

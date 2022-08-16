@@ -2,6 +2,7 @@ import { parse } from 'csv-parse';
 import { createReadStream, promises } from 'fs';
 import { inject, injectable } from 'tsyringe';
 
+import AppError from '../../../../errors/AppError';
 import { ICategoriesRepository } from '../../repositories/ICategoriesRepository';
 
 type IImportCategory = {
@@ -38,7 +39,7 @@ class ImportCategoryUseCase {
   }
 
   async excute(file?: Express.Multer.File): Promise<void> {
-    if (!file) throw new Error('no file sent');
+    if (!file) throw new AppError('no file sent');
     const categories = await this.loadCategories(file);
     categories.forEach(async (category) => {
       const { name } = category;
