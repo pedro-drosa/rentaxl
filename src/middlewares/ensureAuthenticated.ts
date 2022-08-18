@@ -24,7 +24,8 @@ async function ensureAuthenticated(
     const { sub: user_id } = decoded as IPayload;
     const usersRepository = new UsersRepository();
     const userExists = await usersRepository.findById(user_id);
-    if (!userExists) throw new AppError('User not found', 401);
+    if (!userExists) throw new Error('User not found', 404);
+    request.user = { id: user_id };
     next();
   });
 }

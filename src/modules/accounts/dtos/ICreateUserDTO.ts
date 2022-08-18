@@ -3,4 +3,6 @@ export type ICreateUserDTO = {
   password: string;
   email: string;
   driver_license: string;
+  id?: string;
+  avatar?: string;
 };

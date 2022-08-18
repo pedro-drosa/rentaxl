@@ -15,16 +15,18 @@ class User {
   driver_license: string;
   @Column()
   isAdmin: boolean;
+  @Column()
+  avatar: string;
   @CreateDateColumn()
   created_at: Date;
   constructor(
     name: string,
-    username: string,
     password: string,
     email: string,
     driver_license: string,
     created_at?: Date,
-    id?: string
+    id?: string,
+    avatar?: string
   ) {
     this.id = id || uuidV4();
     this.name = name;
@@ -32,6 +34,7 @@ class User {
     this.email = email;
     this.driver_license = driver_license;
     this.isAdmin = false;
+    this.avatar = avatar || '';
     this.created_at = created_at || new Date();
   }
 }
