@@ -24,6 +24,7 @@ async function ensureAuthenticated(
     const usersRepository = new UsersRepository();
     const userExists = await usersRepository.findById(user_id);
     if (!userExists) throw new Error('User not found');
+    request.user = { id: user_id };
     next();
   });
 }
